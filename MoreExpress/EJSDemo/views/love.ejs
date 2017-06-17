@@ -1,0 +1,9 @@
+<% include partials/header %>
+
+<h2>You fall in love with: <span id="thing"><%=mThing%></span></h2>
+
+<% if (mThing.toLowerCase() === "bahar") { %>
+    <p>Good Choice. Bahar is the best!!!</p>
+<% } %>
+
+<% include partials/footer %>
