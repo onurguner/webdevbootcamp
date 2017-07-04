@@ -19,6 +19,13 @@
                     <h4 class="pull-right">price - try</h4>
                     <h4><a><%=campground.name%></a></h4>
                     <p><%=campground.description%></p>
+                    <p><em>Ekleyen: <%=campground.author.username%></em></p>
+                    <% if (currentUser && campground.author.id.equals(currentUser._id)) { %>
+                        <a class="btn btn-xs btn-warning" href="/campgrounds/<%=campground._id%>/edit">Edit Campground</a>
+                        <form class="delete-form" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete Campground</button>
+                        </form>
+                    <% } %>
                 </div>
             </div>
             <div class="well">
@@ -29,9 +36,17 @@
                 <% campground.comments.forEach(function(comment) { %>
                     <div class="row">
                         <div class="col-md-12">
-                            <strong><%=comment.author%></strong>
+                            <strong><%=comment.author.username%></strong>
                             <span class="pull-right">3 days ago</span>
                             <p><%=comment.text%></p>
+                            <% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+                                <a class="btn btn-xs btn-warning" 
+                                    href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit">Edit Comment</a>
+                                <form class="delete-form" method="POST"
+                                    action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE">
+                                    <button class="btn btn-xs btn-danger">Delete Comment</button>
+                                </form>
+                            <% } %>
                         </div>
                     </div>
                 <% }); %>

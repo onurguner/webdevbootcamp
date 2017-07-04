@@ -22,26 +22,26 @@ function seedDB() {
         }
         console.log("database cleared");
         // add data
-        campgrounds.forEach(function(campground) {
-            Campground.create(campground, function(err, campground) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    Comment.create({
-                        text: "Gittim güzel yer",
-                        author: "Onur Guner"
-                    }, function(err, comment) {
-                        if (err) {
-                            console.log(err);
-                        } else {
-                            campground.comments.push(comment);
-                            campground.save();
-                            console.log("campground added...");
-                        }
-                    });
-                }
-            });
-        });
+        // campgrounds.forEach(function(campground) {
+        //     Campground.create(campground, function(err, campground) {
+        //         if (err) {
+        //             console.log(err);
+        //         } else {
+        //             Comment.create({
+        //                 text: "Gittim güzel yer",
+        //                 author: "Onur Guner"
+        //             }, function(err, comment) {
+        //                 if (err) {
+        //                     console.log(err);
+        //                 } else {
+        //                     campground.comments.push(comment);
+        //                     campground.save();
+        //                     console.log("campground added...");
+        //                 }
+        //             });
+        //         }
+        //     });
+        // });
     });   
 }
    
