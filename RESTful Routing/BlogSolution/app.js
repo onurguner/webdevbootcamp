@@ -19,7 +19,7 @@ var blogSchema = new mongoose.Schema({
    body: String,
    created: {type: Date, default: Date.now()},
 });
-var Blog = mongoose.model("Blog", blogSchema);
+var Blog = mongoose.model("Blog", blogSchema);//
 // Blog.create({
 //     title: "Lions",
 //     image: "https://images.unsplash.com/reserve/wrev1ljvQ6KlfyljCQG0_lion.jpg",

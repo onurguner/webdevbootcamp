@@ -18,25 +18,20 @@ router.get("/campgrounds", function(req, res) {
 });
 
 /* RESTful routes
- * name     path                http verb   purpose
- * new      /campgrounds/new    GET         show new campground form */
-router.get("/campgrounds/new", middleware.isLoggedIn, function(req, res) {
-    res.render("campgrounds/new");
-});
-
-/* RESTful routes
  * name     path            http verb   purpose
  * create   /campgrounds    POST        create new campground and redirect somewhere */
 router.post("/campgrounds", middleware.isLoggedIn, function(req, res) {
     var name = req.body.name;
     var image = req.body.image;
     var description = req.body.description;
+    var price = req.body.price;
     var author = { id: req.user._id, username: req.user.username };
     
     var campground = { 
         name: name, 
         image: image, 
         description: description,
+        price: price,
         author: author
     };
     
@@ -49,6 +44,12 @@ router.post("/campgrounds", middleware.isLoggedIn, function(req, res) {
     });
 });
 
+/* RESTful routes
+ * name     path                http verb   purpose
+ * new      /campgrounds/new    GET         show new campground form */
+router.get("/campgrounds/new", middleware.isLoggedIn, function(req, res) {
+    res.render("campgrounds/new");
+});
 
 /* RESTful routes
  * name     path                http verb   purpose
